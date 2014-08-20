@@ -1,0 +1,28 @@
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\bin\Release\DTSListSuite.exe.config
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\bin\Release\DTSListSuite.exe.manifest
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\bin\Release\DTSListSuite.application
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\bin\Release\DTSListSuite.exe
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\bin\Release\DTSListSuite.pdb
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\Create.baml
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\Duplicates.baml
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\MainWindow.baml
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\Menu.baml
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\Options.baml
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\Create.g.cs
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\Duplicates.g.cs
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\MainWindow.g.cs
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\Menu.g.cs
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\Options.g.cs
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\App.g.cs
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite_MarkupCompile.cache
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.g.resources
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.Properties.Resources.resources
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.csproj.GenerateResource.Cache
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.exe.manifest
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.application
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.exe
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.pdb
+C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.csprojResolveAssemblyReference.cache
+C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\bin\Release\DTSListSuite.exe.config
+C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.exe
+C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Release\DTSListSuite.pdb

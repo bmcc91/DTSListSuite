@@ -1,0 +1,5 @@
+﻿<NavigationWindow x:Class="DTSListSuite.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DTS List Suite" Height="250" Width="350" ResizeMode="NoResize" Icon="icon.ico" Source="Menu.xaml">
+</NavigationWindow>
