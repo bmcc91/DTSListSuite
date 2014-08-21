@@ -23,3 +23,28 @@ C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuit
 C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.application
 C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe
 C:\Users\mwallace\documents\visual studio 2013\Projects\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.pdb
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.exe.config
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.pdb
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.exe.manifest
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.application
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.exe
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.pdb
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\Create.baml
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\Duplicates.baml
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\MainWindow.baml
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\Menu.baml
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\Options.baml
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\Create.g.cs
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\Duplicates.g.cs
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\MainWindow.g.cs
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\Menu.g.cs
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\Options.g.cs
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\App.g.cs
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite_MarkupCompile.cache
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.g.resources
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.Properties.Resources.resources
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.csproj.GenerateResource.Cache
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe.manifest
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.application
+C:\Users\bmccarthy\Desktop\GIT DTS\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.csprojResolveAssemblyReference.cache
