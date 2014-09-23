@@ -106,36 +106,107 @@ namespace DTSListSuite
         {
             int capacity = sheetData.Count;
             string[] printList = new string[capacity];
+            string[] printRetire = new string[capacity]; 
             int i = 1;
+            int j = 1;
+            int k = 1;
             foreach (string[] item in sheetData)
             {
-                /* Start Temp Replacements */
-                TextFieldParser parser = new TextFieldParser(new StringReader(dtsList[i]));
-                parser.HasFieldsEnclosedInQuotes = true;
-                parser.SetDelimiters(",");
-                string[] tempDTS = {""};
-                while (!parser.EndOfData)
-                    tempDTS = parser.ReadFields();
-                if (item[4] == "Submitted")
-                    item[9] = tempDTS[10];
-                if (item[0] == "FOC")
+                int PPint;
+                if(int.TryParse(item[8], out PPint))
                 {
-                    item[14] = tempDTS[15];
-                    item[15] = tempDTS[16];
+                    if ((PPint <= 3) && (PPint >= 0))
+                    {/* Retire List */
+                        /* Start Temp Replacements */
+                        TextFieldParser Rparser = new TextFieldParser(new StringReader(dtsList[i]));
+                        Rparser.HasFieldsEnclosedInQuotes = true;
+                        Rparser.SetDelimiters(",");
+                        string[] tempRETIRE = { "" };
+                        while (!Rparser.EndOfData)
+                            tempRETIRE = Rparser.ReadFields();
+                        if (item[4] == "Submitted")
+                            item[9] = tempRETIRE[10];
+                        if (item[0] == "FOC")
+                        {
+                            item[14] = tempRETIRE[15];
+                            item[15] = tempRETIRE[16];
+                        }
+                        if ((item[14] == "Y") || (item[15] == "Y"))
+                            item[13] = "";
+                        item[16] = tempRETIRE[17];
+                        if (tempRETIRE[18] == "Y")
+                            item[17] = tempRETIRE[18];
+                        if (tempRETIRE[19] == "Y")
+                            item[18] = tempRETIRE[19];
+                        /* End Temp Replacements */
+                        string tempRetireItem = string.Join("\t", item);
+                        printRetire[j - 1] = tempRetireItem;
+                        i++;
+                        j++;
+                               
+                    }
+                    else 
+                    {
+                        /* Start Temp Replacements */
+                        TextFieldParser parser = new TextFieldParser(new StringReader(dtsList[i]));
+                        parser.HasFieldsEnclosedInQuotes = true;
+                        parser.SetDelimiters(",");
+                        string[] tempDTS = { "" };
+                        while (!parser.EndOfData)
+                            tempDTS = parser.ReadFields();
+                        if (item[4] == "Submitted")
+                            item[9] = tempDTS[10];
+                        if (item[0] == "FOC")
+                        {
+                            item[14] = tempDTS[15];
+                            item[15] = tempDTS[16];
+                        }
+                        if ((item[14] == "Y") || (item[15] == "Y"))
+                            item[13] = "";
+                        item[16] = tempDTS[17];
+                        if (tempDTS[18] == "Y")
+                            item[17] = tempDTS[18];
+                        if (tempDTS[19] == "Y")
+                            item[18] = tempDTS[19];
+                        /* End Temp Replacements */
+                        string tempItem = string.Join("\t", item);
+                        printList[k - 1] = tempItem;
+                        i++;
+                        k++;
+                    }
                 }
-                if ((item[14] == "Y") || (item[15] == "Y"))
-                    item[13] = "";
-                item[16] = tempDTS[17];
-                if (tempDTS[18] == "Y")
-                    item[17] = tempDTS[18];
-                if (tempDTS[19] == "Y")
-                    item[18] = tempDTS[19];
-                /* End Temp Replacements */
-                string tempItem = string.Join("\t", item);
-                printList[i - 1] = tempItem;
-                i++;
+                else
+                {
+                    /* Start Temp Replacements */
+                    TextFieldParser parser = new TextFieldParser(new StringReader(dtsList[i]));
+                    parser.HasFieldsEnclosedInQuotes = true;
+                    parser.SetDelimiters(",");
+                    string[] tempDTS = { "" };
+                    while (!parser.EndOfData)
+                        tempDTS = parser.ReadFields();
+                    if (item[4] == "Submitted")
+                        item[9] = tempDTS[10];
+                    if (item[0] == "FOC")
+                    {
+                        item[14] = tempDTS[15];
+                        item[15] = tempDTS[16];
+                    }
+                    if ((item[14] == "Y") || (item[15] == "Y"))
+                        item[13] = "";
+                    item[16] = tempDTS[17];
+                    if (tempDTS[18] == "Y")
+                        item[17] = tempDTS[18];
+                    if (tempDTS[19] == "Y")
+                        item[18] = tempDTS[19];
+                    /* End Temp Replacements */
+                    string tempItem = string.Join("\t", item);
+                    printList[k - 1] = tempItem;
+                    i++;
+                    k++;
+                }
             }
-            File.WriteAllLines(DTSListSuite.App.outputFile, printList);
+            File.WriteAllLines(DTSListSuite.App.outputFile, printList); /* File to DTS List*/
+            File.WriteAllLines(DTSListSuite.App.retireFile, printRetire); /* File to Retire List*/
         }
     }
 
@@ -193,8 +264,8 @@ namespace DTSListSuite
             string application = parseTag("appl", dtsHTML);
             string dtsNum = parseTag("DTSnumber", dtsHTML);
             /* Added quotations for automatic hyperlinking in google spreadsheets */
-            dtsNum = "=hyperlink(\"\"\"\"http://magicweb/dts/REQUESTS/" + product +
-                     "/" + application + "/" + dtsNum + ".htm\"\"\"\"," + dtsNum + ")";
+            dtsNum = "=hyperlink(\"http://magicweb/dts/REQUESTS/" + product +
+                     "/" + application + "/" + dtsNum + ".htm\"," + dtsNum + ")";
             return(new string[] {product, application, dtsNum});
         }
 

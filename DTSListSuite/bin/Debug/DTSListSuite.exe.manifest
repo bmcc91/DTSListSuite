@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DTSListSuite.exe" size="50176">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DTSListSuite.exe" size="51200">
       <assemblyIdentity name="DTSListSuite" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9sJj5n6V66BYW9+mMy/qWLdGNv4bCXEYLTKfCHMFbM4=</dsig:DigestValue>
+        <dsig:DigestValue>iXuTem6SKevs7M39uGtaLegMD/6ykmrAfJRh6/IR3Do=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="DTSListSuite.exe.config" size="724">
+  <file name="DTSListSuite.exe.config" size="758">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>8LWDvckJAKGQXuf7jtrVX7uwW6oN4OfwctTPNshmr8Y=</dsig:DigestValue>
+      <dsig:DigestValue>zI63x3J2x9lBoiV5FwZ4WLDzLEDqhYYRVszh10CUU8c=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

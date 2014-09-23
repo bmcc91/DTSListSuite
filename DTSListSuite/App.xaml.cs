@@ -24,6 +24,7 @@ namespace DTSListSuite
         public static string changeTFile;
         public static string changeLFile;
         public static string outputFile;
+        public static string retireFile;
 
         public App()
         {
@@ -65,6 +66,9 @@ namespace DTSListSuite
                     case "Output":
                         outputFile = childNode.Attributes["value"].Value;
                         break;
+                    case "Retire":
+                        retireFile = childNode.Attributes["value"].Value;
+                        break;
                     default:
                         break;
                 }
@@ -76,6 +80,7 @@ namespace DTSListSuite
             changeTFile = inputPath + changeTFile;
             changeLFile = inputPath + changeLFile;
             outputFile = outputPath + outputFile;
+            retireFile = outputPath + retireFile;
         }
     }
 }
