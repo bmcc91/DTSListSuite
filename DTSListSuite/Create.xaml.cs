@@ -104,111 +104,64 @@ namespace DTSListSuite
 
         private void outputData(List<string[]> sheetData, string[] dtsList)
         {
-            int capacity = sheetData.Count;
-            string[] printList = new string[capacity];
-            string[] printRetire = new string[capacity]; 
+            List<string> printList = new List<string>();
+            List<string> printRetire = new List<string>();
             int i = 1;
-            int j = 1;
-            int k = 1;
             foreach (string[] item in sheetData)
             {
-                int PPint;
-                if(int.TryParse(item[8], out PPint))
+                int PPint; 
+                if(int.TryParse(item[8], out PPint)) 
                 {
                     if ((PPint <= 3) && (PPint >= 0))
                     {/* Retire List */
-                        /* Start Temp Replacements */
-                        TextFieldParser Rparser = new TextFieldParser(new StringReader(dtsList[i]));
-                        Rparser.HasFieldsEnclosedInQuotes = true;
-                        Rparser.SetDelimiters(",");
-                        string[] tempRETIRE = { "" };
-                        while (!Rparser.EndOfData)
-                            tempRETIRE = Rparser.ReadFields();
-                        if (item[4] == "Submitted")
-                            item[9] = tempRETIRE[10];
-                        if (item[0] == "FOC")
-                        {
-                            item[14] = tempRETIRE[15];
-                            item[15] = tempRETIRE[16];
-                        }
-                        if ((item[14] == "Y") || (item[15] == "Y"))
-                            item[13] = "";
-                        item[16] = tempRETIRE[17];
-                        if (tempRETIRE[18] == "Y")
-                            item[17] = tempRETIRE[18];
-                        if (tempRETIRE[19] == "Y")
-                            item[18] = tempRETIRE[19];
-                        /* End Temp Replacements */
-                        string tempRetireItem = string.Join("\t", item);
-                        printRetire[j - 1] = tempRetireItem;
-                        i++;
-                        j++;
-                               
+                        printRetire.Add(createList(item, dtsList, i));
                     }
                     else 
-                    {
-                        /* Start Temp Replacements */
-                        TextFieldParser parser = new TextFieldParser(new StringReader(dtsList[i]));
-                        parser.HasFieldsEnclosedInQuotes = true;
-                        parser.SetDelimiters(",");
-                        string[] tempDTS = { "" };
-                        while (!parser.EndOfData)
-                            tempDTS = parser.ReadFields();
-                        if (item[4] == "Submitted")
-                            item[9] = tempDTS[10];
-                        if (item[0] == "FOC")
-                        {
-                            item[14] = tempDTS[15];
-                            item[15] = tempDTS[16];
-                        }
-                        if ((item[14] == "Y") || (item[15] == "Y"))
-                            item[13] = "";
-                        item[16] = tempDTS[17];
-                        if (tempDTS[18] == "Y")
-                            item[17] = tempDTS[18];
-                        if (tempDTS[19] == "Y")
-                            item[18] = tempDTS[19];
-                        /* End Temp Replacements */
-                        string tempItem = string.Join("\t", item);
-                        printList[k - 1] = tempItem;
-                        i++;
-                        k++;
+                    { /* Master List */
+                        printList.Add(createList(item, dtsList, i));
                     }
                 }
                 else
-                {
-                    /* Start Temp Replacements */
-                    TextFieldParser parser = new TextFieldParser(new StringReader(dtsList[i]));
-                    parser.HasFieldsEnclosedInQuotes = true;
-                    parser.SetDelimiters(",");
-                    string[] tempDTS = { "" };
-                    while (!parser.EndOfData)
-                        tempDTS = parser.ReadFields();
-                    if (item[4] == "Submitted")
-                        item[9] = tempDTS[10];
-                    if (item[0] == "FOC")
-                    {
-                        item[14] = tempDTS[15];
-                        item[15] = tempDTS[16];
-                    }
-                    if ((item[14] == "Y") || (item[15] == "Y"))
-                        item[13] = "";
-                    item[16] = tempDTS[17];
-                    if (tempDTS[18] == "Y")
-                        item[17] = tempDTS[18];
-                    if (tempDTS[19] == "Y")
-                        item[18] = tempDTS[19];
-                    /* End Temp Replacements */
-                    string tempItem = string.Join("\t", item);
-                    printList[k - 1] = tempItem;
-                    i++;
-                    k++;
-                }
+                { /* Master List, if PP does not have a value */
+                    printList.Add(createList(item, dtsList, i));
+                 }
+                i++;
             }
-            File.WriteAllLines(DTSListSuite.App.outputFile, printList); /* File to DTS List*/
-            File.WriteAllLines(DTSListSuite.App.retireFile, printRetire); /* File to Retire List*/
+            /* File to appropriate list */
+            File.WriteAllLines(DTSListSuite.App.outputFile, printList);
+            File.WriteAllLines(DTSListSuite.App.retireFile, printRetire);
         }
+       
+        private string createList(string[] item, string[] dtsList, int i)
+        {
+            /* Start Temp Replacements */
+            TextFieldParser parser = new TextFieldParser(new StringReader(dtsList[i]));
+            parser.HasFieldsEnclosedInQuotes = true;
+            parser.SetDelimiters(",");
+            string[] tempLIST = { "" };
+            while (!parser.EndOfData)
+                tempLIST = parser.ReadFields();
+            if (item[4] == "Submitted")
+                item[9] = tempLIST[10];
+            if (item[0] == "FOC")
+            {
+                item[14] = tempLIST[15];
+                item[15] = tempLIST[16];
+            }
+            if ((item[14] == "Y") || (item[15] == "Y"))
+                item[13] = "";
+            item[16] = tempLIST[17];
+            if (tempLIST[18] == "Y")
+                item[17] = tempLIST[18];
+            if (tempLIST[19] == "Y")
+                item[18] = tempLIST[19];
+            /* End Temp Replacements */
+            string tempItem = string.Join("\t", item);
+            return (tempItem);
+        }
+                
     }
+
 
     public class dtsSlot
     {
