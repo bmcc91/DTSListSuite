@@ -59,6 +59,7 @@ namespace DTSListSuite
         {
             /* Sorta slow but whatever */
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(DTSListSuite.App.magicWebPath);
+            request.Proxy = null;   /* Prevents proxy auto-detect, slightly faster */
             request.AllowAutoRedirect = false;
             request.Method = "HEAD";
             try
@@ -104,27 +105,21 @@ namespace DTSListSuite
 
         private void outputData(List<string[]> sheetData, string[] dtsList)
         {
+            int i = 1;
+            int PPint;
             List<string> printList = new List<string>();
             List<string> printRetire = new List<string>();
-            int i = 1;
             foreach (string[] item in sheetData)
             {
-                int PPint; 
                 if(int.TryParse(item[8], out PPint)) 
                 {
-                    if ((PPint <= 3) && (PPint >= 0))
-                    {/* Retire List */
-                        printRetire.Add(createList(item, dtsList, i));
-                    }
+                    if (PPint <= 3)
+                       printRetire.Add(createList(item, dtsList, i)); /* Retire List */
                     else 
-                    { /* Master List */
-                        printList.Add(createList(item, dtsList, i));
-                    }
+                       printList.Add(createList(item, dtsList, i));  /* Master List */
                 }
                 else
-                { /* Master List, if PP does not have a value */
-                    printList.Add(createList(item, dtsList, i));
-                 }
+                    printList.Add(createList(item, dtsList, i));  /* Master List, if PP does not have a value */
                 i++;
             }
             /* File to appropriate list */

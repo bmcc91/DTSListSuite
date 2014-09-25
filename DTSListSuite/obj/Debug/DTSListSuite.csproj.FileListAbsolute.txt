@@ -73,8 +73,6 @@ C:\Users\bmccarthy\Desktop\GIT NEW Retired\DTSListSuite\DTSListSuite\obj\Debug\D
 C:\Users\bmccarthy\Desktop\GIT NEW Retired\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe
 C:\Users\bmccarthy\Desktop\GIT NEW Retired\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.pdb
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.exe.config
-C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe
-C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.pdb
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.exe.manifest
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.application
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\bin\Debug\DTSListSuite.exe
@@ -97,3 +95,5 @@ C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.Prop
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.csproj.GenerateResource.Cache
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe.manifest
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.application
+C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe
+C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.pdb
