@@ -97,3 +97,6 @@ C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe.
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.application
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.exe
 C:\Users\bmccarthy\Desktop\DTSListSuite\DTSListSuite\obj\Debug\DTSListSuite.pdb
+C:\Users\bmccarthy\Desktop\DTSListSuite-master\DTSListSuite\bin\Debug\DTSListSuite.exe.config
+C:\Users\bmccarthy\Desktop\DTSListSuite-master\DTSListSuite\obj\Debug\DTSListSuite.exe
+C:\Users\bmccarthy\Desktop\DTSListSuite-master\DTSListSuite\obj\Debug\DTSListSuite.pdb

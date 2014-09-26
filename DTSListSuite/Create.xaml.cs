@@ -111,7 +111,7 @@ namespace DTSListSuite
             List<string> printRetire = new List<string>();
             foreach (string[] item in sheetData)
             {
-                if(int.TryParse(item[8], out PPint)) 
+                if(int.TryParse(item[9], out PPint)) 
                 {
                     if (PPint <= 3)
                        printRetire.Add(createList(item, dtsList, i)); /* Retire List */
@@ -136,20 +136,23 @@ namespace DTSListSuite
             string[] tempLIST = { "" };
             while (!parser.EndOfData)
                 tempLIST = parser.ReadFields();
-            if (item[4] == "Submitted")
-                item[9] = tempLIST[10];
-            if (item[0] == "FOC")
+            //temp
+            // 0 is now C/R
+            item[0] = tempLIST[0];
+            if (item[5] == "Submitted")
+                item[10] = tempLIST[10];
+            if (item[1] == "FOC")
             {
-                item[14] = tempLIST[15];
-                item[15] = tempLIST[16];
+                item[15] = tempLIST[15];
+                item[16] = tempLIST[16];
             }
-            if ((item[14] == "Y") || (item[15] == "Y"))
-                item[13] = "";
-            item[16] = tempLIST[17];
+            if ((item[15] == "Y") || (item[16] == "Y"))
+                item[14] = "";
+            item[17] = tempLIST[17];
             if (tempLIST[18] == "Y")
-                item[17] = tempLIST[18];
+                item[18] = tempLIST[18];
             if (tempLIST[19] == "Y")
-                item[18] = tempLIST[19];
+                item[19] = tempLIST[19];
             /* End Temp Replacements */
             string tempItem = string.Join("\t", item);
             return (tempItem);
@@ -160,32 +163,33 @@ namespace DTSListSuite
 
     public class dtsSlot
     {
-        public string[] results = new string[19];
+        public string[] results = new string[20];
 
         public dtsSlot(string dtsHTML, string[] ccd, string[] mu2, string[] changesT, string[] changesL)
         {
             DateTime dateTime = DateTime.Today;
             string[] basics = setupBasicInfo(dtsHTML);
-            results[0] = basics[0];
-            results[1] = basics[1];
-            results[2] = basics[2];
-            results[3] = description(dtsHTML);
-            results[4] = status(dtsHTML);
-            results[5] = priority(dtsHTML);
-            results[6] = associated(dtsHTML);
-            results[7] = release(dtsHTML);
-            results[8] = ppack(dtsHTML);
-            results[9] = program(dtsHTML);
-            results[10] = dateTime.ToString("MM/dd/yyyy");
-            results[11] = change(dtsHTML);
-            results[12] = duedate(dtsHTML);
-            results[13] = pushShip(dtsHTML, "6.07C", results[8]);
-            results[14] = shipRing(results[11], changesT);
-            results[15] = shipRing(results[11], changesL);
-            results[16] = "";
-            results[17] = compareList(ccd, results[9], dtsHTML);
-            if (results[17] != "Y")
-                results[18] = compareList(mu2, results[9], dtsHTML);
+            results[0] = ""; /* C/R */
+            results[1] = basics[0];
+            results[2] = basics[1];
+            results[3] = basics[2];
+            results[4] = description(dtsHTML);
+            results[5] = status(dtsHTML);
+            results[6] = priority(dtsHTML);
+            results[7] = associated(dtsHTML);
+            results[8] = release(dtsHTML);
+            results[9] = ppack(dtsHTML);
+            results[10] = program(dtsHTML);
+            results[11] = dateTime.ToString("MM/dd/yyyy");
+            results[12] = change(dtsHTML);
+            results[13] = duedate(dtsHTML);
+            results[14] = pushShip(dtsHTML, "6.07C", results[8]);
+            results[15] = shipRing(results[11], changesT);
+            results[16] = shipRing(results[11], changesL);
+            results[17] = "";
+            results[18] = compareList(ccd, results[9], dtsHTML);
+            if (results[18] != "Y")
+                results[19] = compareList(mu2, results[9], dtsHTML);
         }
 
         private string parseTag(string tag, string dtsHTML)
