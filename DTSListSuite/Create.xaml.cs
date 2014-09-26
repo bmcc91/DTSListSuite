@@ -137,8 +137,10 @@ namespace DTSListSuite
             while (!parser.EndOfData)
                 tempLIST = parser.ReadFields();
             //temp
-            // 0 is now C/R
+            // Pull C/R, Resp App, and Comments directly from csv
             item[0] = tempLIST[0];
+            item[20] = tempLIST[20];
+            item[21] = tempLIST[21];
             if (item[5] == "Submitted")
                 item[10] = tempLIST[10];
             if (item[1] == "FOC")
@@ -163,7 +165,7 @@ namespace DTSListSuite
 
     public class dtsSlot
     {
-        public string[] results = new string[20];
+        public string[] results = new string[22];
 
         public dtsSlot(string dtsHTML, string[] ccd, string[] mu2, string[] changesT, string[] changesL)
         {
@@ -183,13 +185,15 @@ namespace DTSListSuite
             results[11] = dateTime.ToString("MM/dd/yyyy");
             results[12] = change(dtsHTML);
             results[13] = duedate(dtsHTML);
-            results[14] = pushShip(dtsHTML, "6.07C", results[8]);
-            results[15] = shipRing(results[11], changesT);
-            results[16] = shipRing(results[11], changesL);
+            results[14] = pushShip(dtsHTML, "6.07C", results[9]);
+            results[15] = shipRing(results[12], changesT);
+            results[16] = shipRing(results[12], changesL);
             results[17] = "";
-            results[18] = compareList(ccd, results[9], dtsHTML);
+            results[18] = compareList(ccd, results[10], dtsHTML);
             if (results[18] != "Y")
-                results[19] = compareList(mu2, results[9], dtsHTML);
+                results[19] = compareList(mu2, results[10], dtsHTML);
+            results[20] = "";
+            results[21] = "";
         }
 
         private string parseTag(string tag, string dtsHTML)
