@@ -34,6 +34,7 @@ namespace DTSListSuite
             compileButton.IsEnabled = false;
             compileButton.Content = "Compiling...";
             bool check = await checkIntranet();
+           // bool check = checkIntranet();
             if (check)
             {
                 /* Check settings */
@@ -55,7 +56,7 @@ namespace DTSListSuite
             compileButton.Content = "Compile";
         }
 
-        private async Task<bool> checkIntranet()
+         private async Task<bool> checkIntranet()
         {
             /* Sorta slow but whatever */
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(DTSListSuite.App.magicWebPath);
@@ -71,7 +72,8 @@ namespace DTSListSuite
                 return (false);
             }
             return (true);
-        }
+        } 
+
 
         private string[] readData(string input)
         {
@@ -111,15 +113,17 @@ namespace DTSListSuite
             List<string> printRetire = new List<string>();
             foreach (string[] item in sheetData)
             {
-                if(int.TryParse(item[9], out PPint)) 
+                    if (int.TryParse(item[9], out PPint)) 
                 {
                     if (PPint <= 3)
                        printRetire.Add(createList(item, dtsList, i)); /* Retire List */
                     else 
                        printList.Add(createList(item, dtsList, i));  /* Master List */
                 }
-                else
-                    printList.Add(createList(item, dtsList, i));  /* Master List, if PP does not have a value */
+                    else if (item[5] == "Rejected" || item[5] == "Reclass")
+                        printRetire.Add(createList(item, dtsList, i)); /* Retire List, if retired or reclassed */
+                    else
+                        printList.Add(createList(item, dtsList, i));  /* Master List, if PP does not have a value */
                 i++;
             }
             /* File to appropriate list */
