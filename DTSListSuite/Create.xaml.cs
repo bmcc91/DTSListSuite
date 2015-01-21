@@ -120,7 +120,7 @@ namespace DTSListSuite
                     else 
                        printList.Add(createList(item, dtsList, i));  /* Master List */
                 }
-                    else if (item[5] == "Rejected" || item[5] == "Reclass")
+                    else if (item[5].IndexOf("Rejected") != -1 || item[5].IndexOf("Reclass")!= -1)
                         printRetire.Add(createList(item, dtsList, i)); /* Retire List, if retired or reclassed */
                     else
                         printList.Add(createList(item, dtsList, i));  /* Master List, if PP does not have a value */
