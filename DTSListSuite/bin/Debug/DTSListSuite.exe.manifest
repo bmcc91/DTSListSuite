@@ -49,17 +49,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>I0xiGxmBG+JnfvBsdD4Akl7oyxNXQWily/tGP1fCt20=</dsig:DigestValue>
+        <dsig:DigestValue>TZkmX+3G9dlHE6xqUrEmss7vfx8qRfpWxN3ofNfmKWg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="DTSListSuite.exe.config" size="758">
+  <file name="DTSListSuite.exe.config" size="712">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>zI63x3J2x9lBoiV5FwZ4WLDzLEDqhYYRVszh10CUU8c=</dsig:DigestValue>
+      <dsig:DigestValue>Yc0y3R+cTwO0vCDI344i7wUNcgihFDOoFXaV8Ywlxrc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

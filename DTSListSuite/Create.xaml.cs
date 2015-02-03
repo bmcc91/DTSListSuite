@@ -34,19 +34,18 @@ namespace DTSListSuite
             compileButton.IsEnabled = false;
             compileButton.Content = "Compiling...";
             bool check = await checkIntranet();
-           // bool check = checkIntranet();
+            // bool check = checkIntranet();
             if (check)
             {
                 /* Check settings */
-                string[] dtsList = readData(DTSListSuite.App.dtsListFile);
                 string[] csvList = readData(DTSListSuite.App.mDtsListFile);
                 string[] ccdPgrms = readData(DTSListSuite.App.ccdPgrmFile);
                 string[] mu2Pgrms = readData(DTSListSuite.App.muPgrmFile);
                 string[] changesT = readData(DTSListSuite.App.changeTFile);
                 string[] changesL = readData(DTSListSuite.App.changeLFile);
-                compileBar.Maximum = dtsList.Length;
+                compileBar.Maximum = csvList.Length - 1;
                 /* Compile and output */
-                List<string[]> sheetData = await compileData(dtsList, ccdPgrms, mu2Pgrms, changesT, changesL);
+                List<string[]> sheetData = await compileData(csvList, ccdPgrms, mu2Pgrms, changesT, changesL);
                 outputData(sheetData, csvList);
             }
             else
@@ -56,7 +55,7 @@ namespace DTSListSuite
             compileButton.Content = "Compile";
         }
 
-         private async Task<bool> checkIntranet()
+        private async Task<bool> checkIntranet()
         {
             /* Sorta slow but whatever */
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(DTSListSuite.App.magicWebPath);
@@ -72,7 +71,7 @@ namespace DTSListSuite
                 return (false);
             }
             return (true);
-        } 
+        }
 
 
         private string[] readData(string input)
@@ -88,19 +87,28 @@ namespace DTSListSuite
             int i = 0;
             foreach (string dts in dtsList)
             {
-                i++;
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += (s, e) => 
+                if (dts.Substring(0, 3) != "C/R")
+                {
+                    i++;
+                    WebClient client = new WebClient();
+                    client.DownloadStringCompleted += (s, e) =>
                     {
                         dtsSlot temp = new dtsSlot(e.Result, ccdPgrms, mu2Pgrms, changesT, changesL);
                         compileBar.Value = i;
                         /* Add to output list */
                         returnList.Add(temp.results);
                     };
-                string[] dtsArray = dts.Split('\t');
-                var url = string.Format(DTSListSuite.App.magicWebPath + "dts/REQUESTS/{0}/{1}/{2}.htm",
-                    dtsArray[0], dtsArray[1], dtsArray[2]);
-                await client.DownloadStringTaskAsync(new Uri(url));
+                    //   string[] dtsArray = dts.Split('\t');
+                    TextFieldParser parser = new TextFieldParser(new StringReader(dts));
+                    parser.HasFieldsEnclosedInQuotes = true;
+                    parser.SetDelimiters(",");
+                    string[] dtsArray = { "" };
+                    while (!parser.EndOfData)
+                        dtsArray = parser.ReadFields();
+                    var url = string.Format(DTSListSuite.App.magicWebPath + "dts/REQUESTS/{0}/{1}/{2}.htm",
+                        dtsArray[1], dtsArray[2], dtsArray[3]);
+                    await client.DownloadStringTaskAsync(new Uri(url));
+                }
             }
             return (returnList);
         }
@@ -113,24 +121,24 @@ namespace DTSListSuite
             List<string> printRetire = new List<string>();
             foreach (string[] item in sheetData)
             {
-                    if (int.TryParse(item[9], out PPint)) 
+                if (int.TryParse(item[9], out PPint))
                 {
                     if (PPint <= 3)
-                       printRetire.Add(createList(item, dtsList, i)); /* Retire List */
-                    else 
-                       printList.Add(createList(item, dtsList, i));  /* Master List */
-                }
-                    else if (item[5].IndexOf("Rejected") != -1 || item[5].IndexOf("Reclass")!= -1)
-                        printRetire.Add(createList(item, dtsList, i)); /* Retire List, if retired or reclassed */
+                        printRetire.Add(createList(item, dtsList, i)); /* Retire List */
                     else
-                        printList.Add(createList(item, dtsList, i));  /* Master List, if PP does not have a value */
+                        printList.Add(createList(item, dtsList, i));  /* Master List */
+                }
+                else if (item[5].IndexOf("Rejected") != -1 || item[5].IndexOf("Reclass") != -1)
+                    printRetire.Add(createList(item, dtsList, i)); /* Retire List, if retired or reclassed */
+                else
+                    printList.Add(createList(item, dtsList, i));  /* Master List, if PP does not have a value */
                 i++;
             }
             /* File to appropriate list */
             File.WriteAllLines(DTSListSuite.App.outputFile, printList);
             File.WriteAllLines(DTSListSuite.App.retireFile, printRetire);
         }
-       
+
         private string createList(string[] item, string[] dtsList, int i)
         {
             /* Start Temp Replacements */
@@ -163,7 +171,7 @@ namespace DTSListSuite
             string tempItem = string.Join("\t", item);
             return (tempItem);
         }
-                
+
     }
 
 
@@ -211,7 +219,7 @@ namespace DTSListSuite
                 i = dtsHTML.IndexOf("content") + 9;
                 dtsHTML = dtsHTML.Substring(i);
                 int j = dtsHTML.IndexOf("\">");
-                dtsHTML = dtsHTML.Substring(0,j);
+                dtsHTML = dtsHTML.Substring(0, j);
                 return (dtsHTML);
             }
             else
@@ -226,7 +234,7 @@ namespace DTSListSuite
             /* Added quotations for automatic hyperlinking in google spreadsheets */
             dtsNum = "=hyperlink(\"http://magicweb/dts/REQUESTS/" + product +
                      "/" + application + "/" + dtsNum + ".htm\"," + dtsNum + ")";
-            return(new string[] {product, application, dtsNum});
+            return (new string[] { product, application, dtsNum });
         }
 
         private string description(string dtsHTML)
@@ -249,7 +257,7 @@ namespace DTSListSuite
             else
                 return ("");
         }
-        
+
         private string status(string dtsHTML)
         {
             /* Can probably clean this up later */
@@ -314,7 +322,7 @@ namespace DTSListSuite
         {
             return (parseTag("DTSpriority", dtsHTML));
         }
-        
+
         private string associated(string dtsHTML)
         {
             int i = dtsHTML.IndexOf("<th>Req'd/Link</th>");
@@ -322,7 +330,7 @@ namespace DTSListSuite
                 return ("");
             dtsHTML = dtsHTML.Substring(i);
             i = dtsHTML.IndexOf("data\">") + 6;
-            dtsHTML = dtsHTML.Substring(i,1);
+            dtsHTML = dtsHTML.Substring(i, 1);
             if (dtsHTML == "Y")
                 return (dtsHTML);
             return ("");
@@ -363,13 +371,13 @@ namespace DTSListSuite
             else
                 return ("");
         }
-        
+
         private string program(string dtsHTML)
         {
             /* Lots of magic numbers...will fix later */
             /* I hate parsing raw javascript */
             int i = dtsHTML.IndexOf("ToggleAllCompDoc") + 151;
-            dtsHTML = dtsHTML.Substring(i,2000);
+            dtsHTML = dtsHTML.Substring(i, 2000);
             i = dtsHTML.IndexOf("mySections[");
             if (i != -1)
             {
@@ -457,7 +465,7 @@ namespace DTSListSuite
                 return ("");
             string appl = change.Substring(0, 3);
             change = change.Substring(4);
-            foreach(string line in changeList)
+            foreach (string line in changeList)
             {
                 string tempAppl = line.Substring(0, 3);
                 if (appl == tempAppl)

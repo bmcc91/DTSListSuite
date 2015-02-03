@@ -17,7 +17,6 @@ namespace DTSListSuite
         public static string magicWebPath;
         public static string inputPath;
         public static string outputPath;
-        public static string dtsListFile;
         public static string mDtsListFile;
         public static string ccdPgrmFile;
         public static string muPgrmFile;
@@ -45,9 +44,6 @@ namespace DTSListSuite
                     case "OutputPath":
                         outputPath = childNode.Attributes["value"].Value;
                         break;
-                    case "DtsList":
-                        dtsListFile = childNode.Attributes["value"].Value;
-                        break;
                     case "MasterDtsList":
                         mDtsListFile = childNode.Attributes["value"].Value;
                         break;
@@ -73,7 +69,6 @@ namespace DTSListSuite
                         break;
                 }
             }
-            dtsListFile = inputPath + dtsListFile;
             mDtsListFile = inputPath + mDtsListFile;
             ccdPgrmFile = inputPath + ccdPgrmFile;
             muPgrmFile = inputPath + muPgrmFile;

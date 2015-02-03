@@ -2,51 +2,43 @@
 #
 #   README
 #   Written by Michael Wallace
-#   Last Edit 03/18/2014
-#	Current Version v3.0
+#   Edited by Brooke McCarthy
+#   Last Edit 02/03/2015
+#	Current Version v4.0
 #
 #################################################################################
 
 HOW TO USE
 __________
 
-To make a fresh DTS List:
-	- Ensure a valid DTSLIST.txt file is in the program dir/input in the following format:
-			CS ADM 6257
-			CS ADM 6322
-			CS LAB 9751
-			etc...
-	- Run the exe and choose (1) at the menu.
-	- The program will aggregate data from the DTS database and compile it in to a
-		spreadsheet named spreadsheetoutput.csv in dir/input.
 
 To find DTS changes
 	- In the DTS Master Sheet in Google Drive, export the spreadsheet as a .csv.
 	- Rename this file MASTERDTSLIST.csv and place it in the program dir/input.
-	- Run the exe and choose (2) at the menu.
-	- The program will compare fields of the spreadsheet only for DTSs which have
-		been updated on or before the Last Checked date.
-	- A list of Rejected/Reclassed/Changed DTSs will be output in the program dir/output
-		named DTSChanges.txt.
-	- If you'd like a Google Drive formatted list of updated DTSs, choose (Y) when
-		prompted and a spreadsheet named spreadsheetchanges.csv will be output to
-		the program dir/output.
+	- Run the exe and choose Create List at the menu.	
+	- Two lists will be created, an updated master DTS list and an updated list of retired DTSs.
+	    Both of these lists will be in the output folder.
 
 To upload a spreadsheet to Google Drive:
 	- In the Google Drive DTS Master Sheet, choose File -> Import.
-	- Choose the correct .csv file (output/spreadsheetoutput.csv or output/spreadsheetchanges.csv).
+	- Choose the correct .csv file (output/spreadsheetoutput.csv.csv).
 	- Ensure the 'Separator character' is set to 'Tab'
 	- Choose 'Replace data starting at selected cell'
 	- Upon pressing 'Import,' the spreadsheet will be imported and the corresponding
 		cells will be replaced.
+	-If there are any DTS's in the retired list file, go to the Retired sheet and follow the
+	   above steps with the correct .csv file (output/retiredoutput.csv).
 
-To generate URLs from the DTS#:
-	- In the Google Drive DTS Master Sheet, choose Tools -> Script Manager.
-	- Highlight 'makeHyperlink' and click 'Run'
-	- Each cell in the DTS# column will turn in to clickable hyperlinks.
+
 
 VERSION HISTORY
 _______________
+
+v4.0
+- Only one text file! (DTSLIST.txt retired)
+- New retired list
+- Google spreadsheet now searches through more DTSs for program search
+- Google spreadsheet now allows for DTS search via interfaces
 
 v3.0
 -New GUI!
@@ -197,6 +189,8 @@ Parse Fields
 17 LSS				Y		[16]
 18 CCD				Y		[17]
 19 MU2				Y		[18]
+20 Resp Appl		Y		[19]
+21 Comments			Y		[20]
 -- Comments 		NN		RETIRED
 -- In Prod			NN		RETIRED
 -- Rejected			NN		RETIRED

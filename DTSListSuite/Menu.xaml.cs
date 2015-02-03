@@ -83,9 +83,8 @@ namespace DTSListSuite
             bool mut = File.Exists(DTSListSuite.App.muPgrmFile);
             bool liv = File.Exists(DTSListSuite.App.changeLFile);
             bool tes = File.Exists(DTSListSuite.App.changeTFile);
-            bool dts = File.Exists(DTSListSuite.App.dtsListFile);
             bool mas = File.Exists(DTSListSuite.App.mDtsListFile);
-            if (ccd && mut && liv && tes && dts && mas)
+            if (ccd && mut && liv && tes && mas)
                 return (true);
             else
                 return (false);
