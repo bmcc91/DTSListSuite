@@ -1,2 +1,0 @@
-	CS	ADM	=hyperlink("http://magicweb/dts/REQUESTS/CS/ADM/8538.htm",8538)	INFCE: Inbound ADT filer doesn't look to ZCD segment correctly	Rejected	3		6.0R, 6.07R			02/03/2015										
-	CS	MIS	=hyperlink("http://magicweb/dts/REQUESTS/CS/MIS/18107.htm",18107)	INFCE: HL7 Delivery Services - Restrict Ack Text from OV to 150 characters	Rejected	3		6.0R, 6.06R, 6.07R, 6.1R, 6.13R			02/03/2015										
