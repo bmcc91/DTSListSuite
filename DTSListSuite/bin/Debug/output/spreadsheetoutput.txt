@@ -1,0 +1,1 @@
+	CS	MIS	=hyperlink("http://magicweb/dts/REQUESTS/CS/MIS/18493.htm",18493)	HL7 Phone Comp Not Handling Certain Extension Formats	Testing	3	Y	6.0T, 6.07T, 6.08T, 6.1T, 6.14T, 6.15T		MIS.XIO.hl7.phone.comp	05/20/2015										

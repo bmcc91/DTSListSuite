@@ -153,6 +153,7 @@ namespace DTSListSuite
             item[0] = tempLIST[0];
             item[20] = tempLIST[20];
             item[21] = tempLIST[21];
+            item[22] = tempLIST[22];
             if (item[5] == "Submitted")
                 item[10] = tempLIST[10];
             if (item[1] == "FOC")
@@ -177,7 +178,7 @@ namespace DTSListSuite
 
     public class dtsSlot
     {
-        public string[] results = new string[22];
+        public string[] results = new string[23];
 
         public dtsSlot(string dtsHTML, string[] ccd, string[] mu2, string[] changesT, string[] changesL)
         {
@@ -206,6 +207,7 @@ namespace DTSListSuite
                 results[19] = compareList(mu2, results[10], dtsHTML);
             results[20] = "";
             results[21] = "";
+            results[22] = "";
         }
 
         private string parseTag(string tag, string dtsHTML)
